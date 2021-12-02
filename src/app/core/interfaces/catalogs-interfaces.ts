@@ -13,6 +13,12 @@ export interface Raza {
 export interface Servicio {
 	id: string;
 	nombre: string;
+}
+
+export interface Medico{
+	id: string;
+	nombre: string;
+	especialidad: string;
 	status: boolean;
 }
 
