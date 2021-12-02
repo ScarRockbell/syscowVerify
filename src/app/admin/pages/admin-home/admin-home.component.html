@@ -1,0 +1,74 @@
+<div class="wrapper">
+	<div class="sidebar"  data-color="blue" data-image="../assets/img/sidebar-5.jpg">
+		<!--
+	Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+  
+	Tip 2: you can also add an image using data-image tag
+  -->
+		<div class="sidebar-wrapper">
+			<div class="logo">
+				<span class="simple-text">SYSCOW</span>
+			</div>
+			<ul class="nav">
+				<li class="nav-item" routerLinkActive="active">
+					<a class="nav-link" routerLink="dashboard">
+						<i class="nc-icon nc-chart-pie-35"></i>
+						<p>Dashboard</p>
+					</a>
+				</li>
+				<li routerLinkActive="active">
+					<a class="nav-link" routerLink="razas">
+						<i class="nc-icon nc-app"></i>
+						<p>Razas</p>
+					</a>
+				</li>
+				<li routerLinkActive="active">
+					<a class="nav-link" routerLink="clasificaciones">
+						<i class="nc-icon nc-bullet-list-67"></i>
+						<p>Clasificaciones</p>
+					</a>
+				</li>
+				<li routerLinkActive="active">
+					<a class="nav-link" routerLink="medicos">
+						<i class="nc-icon nc-ambulance"></i>
+						<p>Médicos</p>
+					</a>
+				</li>
+				<li routerLinkActive="active">
+					<a class="nav-link" routerLink="servicios">
+						<i class="nc-icon nc-single-copy-04"></i>
+						<p>Servicios</p>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+	<div class="main-panel">
+		<!-- Navbar -->
+		<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+		  <div class="container-fluid">
+			  <a class="navbar-brand" href="#pablo">Admin Panel</a>
+			  <div class="collapse navbar-collapse justify-content-end" id="navigation">
+				  <ul class="navbar-nav ml-auto">
+					  <li class="nav-item">
+						  <a href="#" class="nav-link">
+							
+							<i class="nc-icon nc-simple-remove"></i>
+							<span class="d-lg-block">&nbsp;Log Out</span>
+						  </a>
+					  </li>
+				  </ul>
+			  </div>
+		  </div>
+	  </nav>
+		<!-- End Navbar -->
+		<div class="content">
+			
+				<router-outlet></router-outlet>
+			
+		</div>
+		
+	</div>
+  </div>
+  

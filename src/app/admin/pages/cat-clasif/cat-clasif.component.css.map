@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAA;EACJ,gBAAgB,EAAE,wBAAsB,CAAC,UAAU;CACnD;;AACD,AAAA,KAAK,CAAA;EACJ,gBAAgB,EAAC,KAAM;CACvB;;AAED,AAAA,KAAK,AAAA,MAAM,CAAA;EACV,gBAAgB,EAAE,wBAAsB,CAAC,UAAU;CACnD",
+    "sources": [
+        "cat-clasif.component.scss"
+    ],
+    "names": [],
+    "file": "cat-clasif.component.css"
+}
