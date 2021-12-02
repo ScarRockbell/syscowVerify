@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../intrefaces/usuario';
 import { LoginService } from '../../services/login.service';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     pass:""
   }
   
-  constructor(private loginService:LoginService) { }
+  constructor(private loginService:LoginService, private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +22,14 @@ export class LoginComponent implements OnInit {
   verificar(){
     this.loginService.postLogin(this.usuario).subscribe(resp=>{
       localStorage.setItem('jwt', resp.jswt);
+      if(resp.puesto==="ADMIN"){
+        console.log("Ya entre");
+        this.router?.navigate(['/admin']);
+      }else{
+        this.router?.navigate(['/user']);
+      }
     },err=>{
-      console.log("Ocurrio un error");
+      console.log("Ocurrio un error",err);
     });
   }
 }
