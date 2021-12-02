@@ -1,19 +1,33 @@
 export interface Clasificacion {
-	id: string;
-	nombre: string;
-	status: boolean;
+	idClasificacion: string;
+	nombreClasificacion: string;
+}
+
+export interface ResponseGetClasificaciones{
+	ok:string;
+	msg:string;
+	result:Clasificacion[];
+}
+
+export interface ResponseGetRazas{
+	ok:string;
+	msg:string;
+	result:Raza[];
 }
 
 export interface Raza {
 	id: string;
 	nombre: string;
-	status: boolean;
 }
 
 export interface Servicio {
 	id: string;
 	nombre: string;
-	status:boolean;
+}
+export interface ResponseGetServicios{
+	ok:string;
+	msg:string;
+	result:Raza[];
 }
 
 export interface Medico{
@@ -24,13 +38,8 @@ export interface Medico{
 }
 
 export interface CreatCat{
-	msg:string,
-	ok:string
+	msg:string;
+	ok:string;
 }
 
-export interface getCat{
-	ok:string,
-	msg:string,
-	result:Clasificacion[]
-}
 

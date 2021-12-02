@@ -11,17 +11,14 @@
 					<thead>
 						<th>ID</th>
 						<th>Nombre</th>
-						<th>Estatus</th>
+
 						<th>Editar</th>
 					</thead>
 					<tbody *ngFor="let clas of servicios">
 						<tr >
 							<td>{{clas.id}}</td>
 							<td>{{clas.nombre}}</td>
-							<td>
-								{{clas.status}}
-								{{clas.status | status}}
-							</td>
+
 							<td>
 								<i-bs  name="pencil"
 										  (click)="openModal(edit,clas)"></i-bs>

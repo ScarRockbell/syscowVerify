@@ -10,58 +10,85 @@ import { RazaService } from '../../../core/services/raza.service';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class CatRazaComponent implements OnInit {
+
   modalRef?: BsModalRef;
-  selectClas: Raza = {
+
+
+  selectRaza: Raza = {
     id    : "",
     nombre: "",
-    status: true
   };
+
   statusSelect: boolean = true;
+
   razas?: Raza[];
-  clasTemp:Raza = {
+
+  razaTemp:Raza = {
     id    : "1223",
     nombre: "",
-    status: true
   }
   
-  print(){
-    console.log(this.clasTemp);
-  }
+
 
   constructor(private modalService: BsModalService,
-              private catService: RazaService,
+              private razaService: RazaService,
               private changeDetection: ChangeDetectorRef) {
 
-      this.razas= catService.getRazas();
 
+
+  }
+  ngOnInit(): void {
+
+    this.cargarRazas();
+  }
+
+  cargarRazas(){
+    const value: string | null = localStorage.getItem('jwt');
+    this.razaService.getRazas((value ? value : '' ))
+    .subscribe(resp => { 
+      this.razas = resp.result;
+      console.log(this.razas);
+    });
   }
 
   crear(){
-    this.catService.postRazas(this.clasTemp);
-    this.razas= this.catService.getRazas();
-    this.modalRef?.hide();
+    const value: string | null = localStorage.getItem('jwt');
+    this.razaService.postRazas(this.razaTemp.nombre,(value ? value : '' ))
+    .subscribe(async resp=>{
+      console.log('Raza creada');
+      await this.cargarRazas();
+      this.changeDetection.detectChanges();
+      this.modalRef?.hide();
+    });
   }
 
   editar(){
-    this.selectClas.status = this.statusSelect;
-    this.catService.putRazas(this.selectClas);
-    this.razas= this.catService.getRazas();
-    this.changeDetection.detectChanges();
-    this.modalRef?.hide();
+    const value: string | null = localStorage.getItem('jwt');
+
+    this.razaService.putRazas(this.selectRaza, (value ? value : '' ), this.statusSelect )
+    .subscribe(async resp => { 
+      console.log(resp);
+      await this.cargarRazas();
+      this.changeDetection.detectChanges();
+      this.modalRef?.hide();
+    });
   }
 
   
   
 
- async openModal(template: TemplateRef<any>, clas? : Raza) {
-   if(clas){
-     this.selectClas= clas;
-     this.statusSelect= clas.status;
+ async openModal(template: TemplateRef<any>, raza? : Raza) {
+   if(raza){
+     const raz: Raza = {
+       id: raza.id,
+       nombre: raza.nombre 
+     }
+     this.selectRaza=raz;
+     this.statusSelect= true;
    }
     this.modalRef = this.modalService.show(template);
   }
 
-  ngOnInit(): void {
-  }
+  
 
 }

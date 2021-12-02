@@ -1,47 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Raza } from '../interfaces/catalogs-interfaces';
+import { Raza, ResponseGetRazas } from '../interfaces/catalogs-interfaces';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RazaService {
 
-  razas?: Raza[] = [];
+  url:string="http://74.208.41.209:3242";
 
-  constructor() {
-    this.razas =[
-      {
-        id: "1a2421",
-        nombre: "Clas1",
-        status: false
-      },
-      {
-        id: "1a2422",
-        nombre: "Clas2",
-        status: false
-      },
-      {
-        id: "1a2423",
-        nombre: "Clas3",
-        status: false
-      },
-    ]
+  constructor(private http:HttpClient) {
+    
    }
 
-  getRazas(){
-    return this.razas;
+
+  getRazas(jwt : string):Observable<ResponseGetRazas>{ 
+    return this.http.post<ResponseGetRazas>(`${this.url}/admin/razaview`, {'jwt': jwt});
   }
-  postRazas(clas: Raza){
-    this.razas?.unshift(clas);
+
+  postRazas(nombre:string,jwt:string): Observable <any>{
+    return this.http.post<any>(`${this.url}/admin/raza`,{nombre,jwt});
   }
-  putRazas(clas: Raza){
-    if(this.razas){
-      for(let i of this.razas){
-        if(clas.id === i.id){
-          clas.nombre=i.nombre;
-        }
-      }
-    }
+
+  putRazas(raza: Raza, jwt : string, status: boolean): Observable <any>{
+    return this.http.put<any>(`${this.url}/admin/clasif`,{nombre: raza.nombre, id: raza.id, jwt, status});
   }
 
 }

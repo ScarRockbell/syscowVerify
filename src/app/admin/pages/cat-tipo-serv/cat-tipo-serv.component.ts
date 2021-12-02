@@ -15,14 +15,12 @@ export class CatTipoServComponent implements OnInit {
   selectClas: Servicio = {
     id    : "",
     nombre: "",
-    status: true
   };
   statusSelect: boolean = true;
   servicios?: Servicio[];
   clasTemp:Servicio = {
     id    : "1223",
     nombre: "",
-    status: true
   }
   
   print(){
@@ -33,20 +31,20 @@ export class CatTipoServComponent implements OnInit {
               private catService: ServicioService,
               private changeDetection: ChangeDetectorRef) {
 
-      this.servicios= catService.getServicios();
+      
 
   }
 
   crear(){
     this.catService.postServicios(this.clasTemp);
-    this.servicios= this.catService.getServicios();
+   
     this.modalRef?.hide();
   }
 
   editar(){
-    this.selectClas.status = this.statusSelect;
+
     this.catService.putServicios(this.selectClas);
-    this.servicios= this.catService.getServicios();
+   
     this.changeDetection.detectChanges();
     this.modalRef?.hide();
   }
@@ -57,7 +55,6 @@ export class CatTipoServComponent implements OnInit {
  async openModal(template: TemplateRef<any>, clas? : Servicio) {
    if(clas){
      this.selectClas= clas;
-     this.statusSelect= clas.status;
    }
     this.modalRef = this.modalService.show(template);
   }

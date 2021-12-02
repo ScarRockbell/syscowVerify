@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
   }
 
   verificar(){
-    this.loginService.postLogin(this.usuario).subscribe(resp=>{
+    this.loginService.postLogin(this.usuario)
+    .subscribe(resp=>{
       localStorage.setItem('jwt', resp.jswt);
       if(resp.puesto==="ADMIN"){
         console.log("Ya entre");
