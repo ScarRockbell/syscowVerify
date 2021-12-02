@@ -13,6 +13,7 @@ export interface Raza {
 export interface Servicio {
 	id: string;
 	nombre: string;
+	status:boolean;
 }
 
 export interface Medico{
@@ -20,5 +21,16 @@ export interface Medico{
 	nombre: string;
 	especialidad: string;
 	status: boolean;
+}
+
+export interface CreatCat{
+	msg:string,
+	ok:string
+}
+
+export interface getCat{
+	ok:string,
+	msg:string,
+	result:Clasificacion[]
 }
 

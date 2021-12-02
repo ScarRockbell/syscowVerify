@@ -32,21 +32,22 @@ export class CatClasifComponent implements OnInit {
   constructor(private modalService: BsModalService,
               private catService: CategoriaService,
               private changeDetection: ChangeDetectorRef) {
-
-      this.clasificaciones= catService.getClasificaciones();
+        this.catService.getClasificaciones(JSON.stringify(localStorage.getItem('jwt'))).subscribe(resp=>{
+          
+        });
 
   }
 
   crear(){
-    this.catService.postClasificaciones(this.clasTemp);
-    this.clasificaciones= this.catService.getClasificaciones();
+    this.catService.postClasificaciones(this.clasTemp.nombre,JSON.stringify(localStorage.getItem("jwt")));
+    //this.clasificaciones=this.catService.getClasificaciones(JSON.stringify(localStorage.getItem("jwt")));
     this.modalRef?.hide();
   }
 
   editar(){
     this.selectClas.status = this.statusSelect;
     this.catService.putClasificaciones(this.selectClas);
-    this.clasificaciones= this.catService.getClasificaciones();
+    //this.clasificaciones= this.catService.getClasificaciones(JSON.stringify(localStorage.getItem("jwt")));
     this.changeDetection.detectChanges();
     this.modalRef?.hide();
   }
