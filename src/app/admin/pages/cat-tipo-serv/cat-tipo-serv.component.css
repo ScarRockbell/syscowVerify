@@ -1,1 +1,12 @@
-/* No CSS *//*# sourceMappingURL=cat-tipo-serv.component.css.map */
+.bg-f {
+    background-color: rgba(241, 169, 160, 0.4) !important;
+  }
+  
+  .bg-t {
+    background-color: white;
+  }
+  
+  .bg-t:hover {
+    background-color: rgba(210, 215, 211, 0.4) !important;
+  }
+  /*# sourceMappingURL=cat-clasif.component.css.map */
