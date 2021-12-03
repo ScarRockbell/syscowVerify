@@ -14,14 +14,14 @@
 
 						<th>Editar</th>
 					</thead>
-					<tbody *ngFor="let clas of servicios">
+					<tbody *ngFor="let service of servicios">
 						<tr >
-							<td>{{clas.id}}</td>
-							<td>{{clas.nombre}}</td>
+							<td>{{service.id}}</td>
+							<td>{{service.descripcion}}</td>
 
 							<td>
 								<i-bs  name="pencil"
-										  (click)="openModal(edit,clas)"></i-bs>
+										  (click)="openModal(edit,service)"></i-bs>
 							</td>
 						</tr>	
 					</tbody>
@@ -50,7 +50,7 @@
 				<div class="col">
 					<div class="form-group">
 					  <label for="nombreClas">Ingresa nombre de servicio:</label>
-					  <input (ngModelChange)="print()" name="nombreClas" [(ngModel)]="clasTemp.nombre" type="text" class="form-control" id="nombreClas">
+					  <input  name="nombreClas" [(ngModel)]="clasTemp.descripcion" type="text" class="form-control" id="nombreClas">
 					</div>
 				</div>
 			</div>
@@ -85,7 +85,7 @@
 				<div class="col">
 					<div class="form-group">
 					  <label for="nombreClas">Nombre:</label>
-					  <input  [(ngModel)]="selectClas.nombre" name="clasEdit" type="text" class="form-control" id="nombreClas">
+					  <input  [(ngModel)]="selectClas.descripcion" name="clasEdit" type="text" class="form-control" id="nombreClas">
 					</div>
 				</div>
 				<div class="col">

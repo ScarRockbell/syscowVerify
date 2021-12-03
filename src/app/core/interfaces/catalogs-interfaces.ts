@@ -22,24 +22,43 @@ export interface Raza {
 
 export interface Servicio {
 	id: string;
-	nombre: string;
+	descripcion: string;
 }
 export interface ResponseGetServicios{
 	ok:string;
 	msg:string;
-	result:Raza[];
+	result:Servicio[];
+}
+
+export interface ResponseGetMedicos{
+	ok:string;
+	msg:string;
+	result:Medico[];
 }
 
 export interface Medico{
-	id: string;
+	idMedico: string;
 	nombre: string;
 	especialidad: string;
-	status: boolean;
 }
 
 export interface CreatCat{
 	msg:string;
 	ok:string;
+}
+
+export interface Usuario{
+	idUsuario:string;
+	nombreUsuario:string;
+	puesto:string;
+	telefono:string;
+	contraseniaUsuario:string;
+}
+
+export interface ResponseGetUsuarios{
+	ok:string;
+	msg:string;
+	result:Usuario[];
 }
 
 

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
     .subscribe(resp=>{
       localStorage.setItem('jwt', resp.jswt);
       if(resp.puesto==="ADMIN"){
-        console.log("Ya entre");
         this.router?.navigate(['/admin']);
       }else{
         this.router?.navigate(['/user']);
