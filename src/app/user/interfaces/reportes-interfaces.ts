@@ -1,5 +1,5 @@
 export interface GastoAcum{
-    SUM:number;
+    Total:number;
     IDAnimal:number;
   }
   
@@ -51,3 +51,52 @@ export interface GastoAcum{
     result:GanadoClasif[];
     server:Extra;
   }
+
+  export interface NacimientosIntervalo{
+      TotalNacimientos:number;
+  }
+
+  export interface ResponseNacimientoIntervalo{
+    ok:string;
+    msg:string;
+    result:NacimientosIntervalo;
+    server:Extra;
+  }
+
+  export interface VentasAnio{
+      Ventas:number;
+      Mes:number;
+  }
+
+  export interface ResponseVentasAnio{
+      ok:string;
+      msg:string;
+      result:VentasAnio[];
+      server:Extra;
+  }
+
+  export interface GastosAnio{
+    Gastos:number;
+    Mes:number;
+  }
+
+  export interface ResponseGastosAnio{
+    ok:string;
+    msg:string;
+    result:GastosAnio[];
+    server:Extra;
+  }
+
+  export interface Abortos{
+      TotalAbortos:number;
+  }
+
+  export interface ResponseAbortos{
+    ok:string;
+    msg:string;
+    result:Abortos;
+    server:Extra;
+  }
+
+
+
