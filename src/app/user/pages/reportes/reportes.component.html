@@ -9,13 +9,16 @@
 			<div class="table-responsive table-full-width">
 				<table class="table table-hover">
 					<thead>
-						<th>ID</th>
-                        <th>Monto acumulado</th>
+						<th>ID Animal</th>
+						<th>Monto acumulado</th>
+						<th>Ver servicios</th>
 					</thead>
 					<tbody *ngFor="let Rep of reporteGastosAcum">
-						<tr >
+						<tr>
 							<td>{{Rep.IDAnimal}}</td>
 							<td>{{Rep.Total}}</td>
+							<td><a routerLink='/user/servicios/{{Rep.IDAnimal}}'>Ver</a>
+							</td>
 						</tr>	
 					</tbody>
 				</table>
@@ -39,29 +42,6 @@
 						<tr >
 							<td>{{Parto.IDMedico}}</td>
 							<td>{{Parto.TotalPartos}}</td>
-						</tr>	
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="row justify-content-center">
-		<div class="col-11 p-3">
-			<div class="col-12 m-3">
-				<h2 class="text-left">
-					Edad del ganado
-				</h2>
-			</div>
-			<div class="table-responsive table-full-width">
-				<table class="table table-hover">
-					<thead>
-						<th>Edad</th>
-                        <th>Total de animales</th>
-					</thead>
-					<tbody *ngFor="let edad of reporteEdadGanado">
-						<tr >
-							<td>{{edad.Anios}}</td>
-							<td>{{edad.Total}}</td>
 						</tr>	
 					</tbody>
 				</table>

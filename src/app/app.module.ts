@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 
 
 @NgModule({

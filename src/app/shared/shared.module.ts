@@ -24,8 +24,7 @@ import {ChartModule} from 'primeng/chart';
     MatSelectModule,
     MatSortModule,
     RadioButtonModule,
-    ChartModule
-    
+    ChartModule,
   ]
 })
 export class SharedModule { }

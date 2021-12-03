@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StatusPipe } from './pipes/status.pipe';
-
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from "ngx-ui-loader";
 
 
 @NgModule({
@@ -11,6 +11,7 @@ import { StatusPipe } from './pipes/status.pipe';
   ],
   imports: [
     CommonModule,
+
   ],
 
 })

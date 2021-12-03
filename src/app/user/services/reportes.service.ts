@@ -13,7 +13,7 @@ export class ReportesService {
 
   constructor(private http:HttpClient) { }
 
-  //Costos de servicio por animal
+  //Costos de servicio por animal - Ready
   getReporteGastoAcum(jwt:string):Observable<RepGastoAcum>{
     return this.http.post<RepGastoAcum>(`${this.url}reports/costo_por_animal`,{'jwt':jwt});
   }
@@ -23,25 +23,24 @@ export class ReportesService {
     return this.http.post<ResponsePartosMedico>(`${this.url}reports/partos_por_medico`,{'jwt':jwt});
   }
 
-  //Total de animales de cierta edad
+  //Total de animales de cierta edad - READY
   getEdadGanado(jwt:string):Observable<ResponseEdadGanado>{
     return this.http.post<ResponseEdadGanado>(`${this.url}reports/edad_del_ganado`,{'jwt':jwt});
   }
 
-  //Nacimientos por intervalo
+  //Nacimientos por intervalo 
   getNacimientoIntervalo(jwt:string,desde:string,hasta:string):Observable<ResponseNacimientoIntervalo>{
     return this.http.post<ResponseNacimientoIntervalo>(`${this.url}nacimientos_por_intervalo`,{'jwt':jwt,'desde':desde,'hasta':hasta});
   }
 
   //Ventas por anio
-  getVentasAnio(jwt:string,anio:string):Observable<ResponseVentasAnio>{
-    return this.http.post<ResponseVentasAnio>(`${this.url}reports/ventas_por_anio`,{'jwt':jwt,'year':anio});
-
+  getVentasAnio(jwt:string,anio:string):Observable<any>{
+    return this.http.post<any>(`${this.url}reports/ventas_por_anio`,{'jwt':jwt,'year':anio});
   }
 
-  //Ventas por anio
-  getGastosAnio(jwt:string,anio:string):Observable<ResponseGastosAnio>{
-    return this.http.post<ResponseGastosAnio>(`${this.url}reports/gastos_por_anio`,{'jwt':jwt,'year':anio})
+  //Gastos por anio
+  getGastosAnio(jwt:string,anio:string):Observable<any>{
+    return this.http.post<any>(`${this.url}reports/gastos_por_anio`,{'jwt':jwt,'year':anio})
   }
 
   //Gastos globales por mes dado un limite
@@ -55,7 +54,7 @@ export class ReportesService {
   }
 
   //Get ganado por clasificacion
-  getGanadoClasificacion(jwt:string):Observable<ResponseGanadoClasif>{
-    return this.http.post<ResponseGanadoClasif>(`${this.url}reports/ganado_por_clasifiacion`,{'jwt':jwt});
+  getGanadoClasificacion(jwt:string):Observable<any>{
+    return this.http.post<any>(`${this.url}reports/ganado_por_clasifiacion`,{'jwt':jwt});
   }
 }

@@ -98,5 +98,15 @@ export interface GastoAcum{
     server:Extra;
   }
 
+  export interface ChartData{
+    labels: any[];
+     datasets: DataSets[];
+  }
 
+  export interface DataSets{
+
+    label: string;
+    backgroundColor: string;
+    data: any;
+  }
 

@@ -14,8 +14,7 @@ const routes: Routes = [
     path:'',
     component: AdminHomeComponent,
     children: [
-      {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      { path: 'dashboard', component: AdminDashboardComponent},
+      {path: '', redirectTo: 'razas', pathMatch: 'full'},
       { path: 'razas', component: CatRazaComponent},
       { path: 'clasificaciones', component: CatClasifComponent},
       { path: 'medicos', component: CatMedicosComponent},
