@@ -1,49 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Medico } from '../interfaces/catalogs-interfaces';
+import { Observable } from 'rxjs';
+import { CreatCat, Medico, ResponseGetMedicos } from '../interfaces/catalogs-interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicoService {
-  medicos?: Medico[];
-  constructor() { 
-    this.medicos=[
-      {
-        id:"123",
-        nombre:"Pedro",
-        especialidad:"Vacas",
-        status:true
-      },
-      {
-        id:"945",
-        nombre:"Juan",
-        especialidad:"Ganado",
-        status:false
-      },
-      {
-        id:"654",
-        nombre:"Angel",
-        especialidad:"Becerros",
-        status:true
-      }
-    ]
-  }
-  getMedicos(){
-    return this.medicos;
+
+  url:string="http://74.208.41.209:3242";
+
+  constructor(private http:HttpClient){}
+  getMedicos(jwt:string):Observable<ResponseGetMedicos>{
+    return this.http.post<ResponseGetMedicos>(`${this.url}/admin/medicoview`,{'jwt':jwt});
   }
 
-  postMedicos(clas:Medico){
-    this.medicos?.unshift(clas);
+  postMedicos(nombreMedico:string,especialidadMedico:string,jwt:string):Observable<CreatCat>{
+    return this.http.post<CreatCat>(`${this.url}/admin/medico`,{'jwt':jwt,'nombre':nombreMedico,'especialidad':especialidadMedico});
   }
 
-  putMedicos(clas:Medico){
-    if(this.medicos){
-      for(let i of this.medicos){
-        if(clas.id===i.id){
-          clas.nombre=i.nombre;
-          clas.especialidad=i.especialidad;
-        }
-      }
-    }
+  putMedicos(clas:Medico,jwt:string,status:boolean):Observable<any>{
+    return this.http.put<any>(`${this.url}/admin/medico`,{idMedico:clas.idMedico,especialidad:clas.especialidad,nombre:clas.nombre,jwt,status});
   }
 }

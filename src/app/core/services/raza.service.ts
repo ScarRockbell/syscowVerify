@@ -24,7 +24,7 @@ export class RazaService {
   }
 
   putRazas(raza: Raza, jwt : string, status: boolean): Observable <any>{
-    return this.http.put<any>(`${this.url}/admin/clasif`,{nombre: raza.nombre, id: raza.id, jwt, status});
+    return this.http.put<any>(`${this.url}/admin/raza`,{nombre: raza.nombre, id: raza.id, jwt, status});
   }
 
 }

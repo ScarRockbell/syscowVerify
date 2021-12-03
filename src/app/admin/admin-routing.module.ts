@@ -6,6 +6,7 @@ import { CatClasifComponent } from './pages/cat-clasif/cat-clasif.component';
 import { CatMedicosComponent } from './pages/cat-medicos/cat-medicos.component';
 import { CatRazaComponent } from './pages/cat-raza/cat-raza.component';
 import { CatTipoServComponent } from './pages/cat-tipo-serv/cat-tipo-serv.component';
+import { CatUsuariosComponent } from './pages/cat-usuarios/cat-usuarios.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'clasificaciones', component: CatClasifComponent},
       { path: 'medicos', component: CatMedicosComponent},
       { path: 'servicios', component: CatTipoServComponent},
+      { path: 'usuarios', component: CatUsuariosComponent}
     ]
   }
 

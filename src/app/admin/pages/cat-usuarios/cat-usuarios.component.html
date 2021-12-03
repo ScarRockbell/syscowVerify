@@ -3,7 +3,7 @@
 		<div class="col-11 p-3">
 			<div class="col-12 m-3">
 				<h2 class="text-left">
-					Medicos
+					Usuarios
 				</h2>
 			</div>
 			<div class="table-responsive table-full-width">
@@ -11,17 +11,19 @@
 					<thead>
 						<th>ID</th>
 						<th>Nombre</th>
-                        <th>Especialidad</th>
+                        <th>Puesto</th>
+                        <th>Telefono</th>
 						<th>Editar</th>
 					</thead>
-					<tbody *ngFor="let clas of medicos">
+					<tbody *ngFor="let user of usuarios">
 						<tr >
-							<td>{{clas.idMedico}}</td>
-							<td>{{clas.nombre}}</td>
-                            <td>{{clas.especialidad}}</td>
+							<td>{{user.idUsuario}}</td>
+							<td>{{user.nombreUsuario}}</td>
+                            <td>{{user.puesto}}</td>
+                            <td>{{user.telefono}}</td>
 							<td>
 								<i-bs  name="pencil"
-										  (click)="openModal(edit,clas)"></i-bs>
+										  (click)="openModal(edit,user)"></i-bs>
 							</td>
 						</tr>	
 					</tbody>
@@ -49,13 +51,31 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-					  <label for="nombreClas">Ingresa nombre del medico:</label>
-					  <input  name="nombreClas" [(ngModel)]="clasTemp.nombre" type="text" class="form-control" id="nombreClas">
-                      <label for="nombreClas">Ingresa la especialidad:</label>
-					  <input  name="especialidadClas" [(ngModel)]="clasTemp.especialidad" type="text" class="form-control" id="especialidadClas">
-                    </div>
+					  <label for="nombreClas">Nombre de usuario:</label>
+					  <input  name="nombreClas" [(ngModel)]="clasTemp.nombreUsuario" type="text" class="form-control" id="nombreClas">
+					</div>
 				</div>
-			</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="puestoClas">Puesto:</label>
+					  <input  name="puestoClas" [(ngModel)]="clasTemp.puesto" type="text" class="form-control" id="puestoClas">
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col">
+					<div class="form-group">
+					  <label for="telClas">Telefono:</label>
+					  <input  name="telClas" [(ngModel)]="clasTemp.telefono" type="text" class="form-control" id="telClas">
+					</div>
+				</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="passClas">Contraseña:</label>
+					  <input  name="passClas" [(ngModel)]="clasTemp.contraseniaUsuario" type="text" class="form-control" id="passClas" min="10">
+					</div>
+				</div>
+            </div>
 			<div class="row justify-content-end mr-1">
 				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
 					Cancelar
@@ -63,6 +83,9 @@
 				<button class="col-3 btn btn-success" (click)="crear()">
 					Crear
 				</button>
+			</div>
+			<div class="row justify-content-start">
+				<p class="text-danger"><small>Minimo de 10 caracteres para la contraseña</small></p>
 			</div>
 			
 			<div class="row justify-content-end mr-1">
@@ -87,25 +110,33 @@
 				<div class="col">
 					<div class="form-group">
 					  <label for="nombreClas">Nombre:</label>
-					  <input  [(ngModel)]="selectClas.nombre" name="nameEdit" type="text" class="form-control" id="nombreClas">
+					  <input  [(ngModel)]="selectClas.nombreUsuario" name="nameEdit" type="text" class="form-control" id="nombreClas">
 					</div>
 				</div>
                 <div class="col">
 					<div class="form-group">
-					  <label for="nombreClas">Especialidad:</label>
-					  <input  [(ngModel)]="selectClas.especialidad" name="clasEdit" type="text" class="form-control" id="especialidadClas">
+					  <label for="nombreClas">Puesto:</label>
+					  <input  [(ngModel)]="selectClas.puesto" name="puestoEdit" type="text" class="form-control" id="puestoClas">
 					</div>
 				</div>
-				<div class="col">
+                <div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Telefono:</label>
+					  <input  [(ngModel)]="selectClas.telefono" name="telEdit" type="text" class="form-control" id="telClas">
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col">
 					<div class="form-group">
 					  <label for="estatusClas">Estatus:</label>
-					  <select [(ngModel)]="statusSelect" name="miselect" class="form-control" name="estatusClas" id="estatusClas">
+					  <select name="miselect" class="form-control" name="estatusClas" id="estatusClas"  [(ngModel)]="statusSelect">
 						<option [value]="true" >Activo</option>
 						<option [value]="false" >Desactivado</option>
 						</select>
 					</div>
 				</div>
-			</div>
+            </div>
 			<div class="row justify-content-end mr-1">
 				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
 					Cancelar

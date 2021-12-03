@@ -2,9 +2,6 @@ import { Component, OnInit, TemplateRef, ChangeDetectorRef, ChangeDetectionStrat
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Clasificacion } from '../../../core/interfaces/catalogs-interfaces';
 import { CategoriaService } from '../../../core/services/categoria.service';
-interface JASON {
-  jwt: string;
-}
 
 @Component({
   selector: 'app-cat-clasif',
