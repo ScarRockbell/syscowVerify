@@ -18,7 +18,7 @@ export class AnimalesComponent implements OnInit {
   animales : AnimalResponse[] = [];
   sortedData: AnimalResponse[] = [];
   dataAnimales: AnimalResponse[] = [];
-
+  selectedValue : string = 'val1  '
 
   ngOnInit(): void {
 

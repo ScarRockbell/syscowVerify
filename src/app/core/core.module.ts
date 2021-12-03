@@ -6,11 +6,12 @@ import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
-    StatusPipe
+    StatusPipe,
+    
   ],
   imports: [
     CommonModule,
   ],
-  exports: [StatusPipe]
+
 })
 export class CoreModule { }

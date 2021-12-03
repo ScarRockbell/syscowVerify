@@ -191,7 +191,6 @@ async openModal(template: TemplateRef<any>) {
     this.animalService.postBajaAnimal((value ? value : ''), baja )
     .subscribe(
       resp=>{
-        console.log('Baja registrada');
         if(this.ventaSelect){
           if(this.animal){
             const venta : Venta = {
@@ -202,11 +201,14 @@ async openModal(template: TemplateRef<any>) {
             this.animalService.postVentaAnimal((value ? value : ''), venta )
             .subscribe(resp=>{
               console.log('Venta registrada');
+              this.modalRef?.hide();
               this.router.navigateByUrl('/user/animales');
             })
           }
         }else{
+           this.modalRef?.hide();
           this.router.navigateByUrl('/user/animales');
+          
         }
       }
     )

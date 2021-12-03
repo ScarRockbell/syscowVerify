@@ -7,8 +7,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSortModule} from '@angular/material/sort';
-
-
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {ChartModule} from 'primeng/chart';
 @NgModule({
   declarations: [],
   imports: [
@@ -22,8 +22,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatNativeDateModule, 
     MatInputModule,
     MatSelectModule,
-    MatSortModule
-
+    MatSortModule,
+    RadioButtonModule,
+    ChartModule
     
   ]
 })

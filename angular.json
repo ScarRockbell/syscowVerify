@@ -41,7 +41,8 @@
               "src/assets/js/core/bootstrap.min.js",
               "src/assets/js/plugins/bootstrap-switch.js",
               "src/assets/js/light-bootstrap-dashboard.js",
-              "src/assets/js/plugins/bootstrap-notify.js"
+              "src/assets/js/plugins/bootstrap-notify.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {

@@ -16,18 +16,18 @@
 <div class="container-fluid m-5">
 	<h1>Detalles:</h1>
 
-	<div class="container-fluid">
+	<div class="container">
 		<form [formGroup]="miFormulario">
 			<div class="container">
 				<div class="row">
-					<div class="col-4">
+					<div class="col">
 						<label class="col-12">Arete Interno:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingrese arete</mat-label>
 							<input matInput placeholder="Ej. 123"  formControlName="areteInterno">
 						</mat-form-field>
 					</div>
-					<div class="col-5">
+					<div class="col">
 						<label class="col-12">Arete Siniiga:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingrese Siniiga</mat-label>
@@ -37,7 +37,7 @@
 				</div>
 			
 				<div class="row justify-content-left">
-					<div class="col-4">
+					<div class="col">
 						<label class="col-12">Fecha de Nacimiento:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingresa fecha:</mat-label>
@@ -46,7 +46,7 @@
 							<mat-datepicker #picker1></mat-datepicker>
 						</mat-form-field>
 					</div>
-					<div class="col-6">
+					<div class="col">
 						<label class="text-left col-12">Sexo:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingresa Sexo:</mat-label>
@@ -62,7 +62,7 @@
 					</div>
 				</div>
 				<div class="row justify-content-left">
-					<div class="col-4" *ngIf="clasificaciones">
+					<div class="col" *ngIf="clasificaciones">
 						<label class="text-left col-12">Clasificación:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingresa clasificación:</mat-label>
@@ -73,7 +73,7 @@
 							</mat-select>
 						  </mat-form-field>
 					</div>
-					<div class="col-6" *ngIf="razas">
+					<div class="col" *ngIf="razas">
 						<label class="text-left col-12">Raza:</label>
 						<mat-form-field appearance="fill">
 							<mat-label>Ingresa raza:</mat-label>

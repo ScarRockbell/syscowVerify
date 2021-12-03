@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Animal, GetAnimalsResponse, Baja, Venta, Servicio, GetServiciosResponse } from '../interfaces/interfaces';
+import { Animal, GetAnimalsResponse, Baja, Venta, GetServiciosResponse, NewServicio, GetDiagnosticoResponse, NewDiagnostico, NewParto, GetPartosResponse } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,27 @@ export class AnimalService {
   getServicios(jwt: string, idAnimal: string): Observable <GetServiciosResponse>{
     return this.http.post<GetServiciosResponse>(`${this.url}ranch/getserviciosbyanimal`,{jwt,idAnimal});
   }
+
+  postServicio(jwt: string, servicio : NewServicio): Observable <any> {
+    return this.http.post<any>(`${this.url}ranch/createservicio`,{jwt,...servicio});
+  }
+  
+  getDiagnostico(jwt : string,  idAnimal: number): Observable <GetDiagnosticoResponse>{
+    return this.http.post<any>(`${this.url}ranch/getDiagnostico`,{jwt, idAnimal});
+    
+  }
+  postDiagnostico(jwt: string, diagnostico : NewDiagnostico): Observable <any> {
+    return this.http.post<any>(`${this.url}ranch/animales/diagnostico`,{jwt,...diagnostico});
+  }
+  postParto(jwt: string, parto : NewParto): Observable <any> {
+    return this.http.post<any>(`${this.url}ranch/registroparto`,{jwt,...parto});
+  }
+  getPartos (jwt: string, idAnimal: number) : Observable <GetPartosResponse>{
+    return this.http.post<GetPartosResponse>(`${this.url}ranch/getpartosbyanimal`,{jwt, idAnimal});
+      }
+
+  
+
+
 
 }
