@@ -12,43 +12,70 @@ import { CategoriaService } from '../../../core/services/categoria.service';
 export class CatClasifComponent implements OnInit {
 
   modalRef?: BsModalRef;
+
   selectClas: Clasificacion = {
-    id    : "",
-    nombre: "",
-    status: true
+    idClasificacion    : "",
+    nombreClasificacion: "",
   };
+
   statusSelect: boolean = true;
+
   clasificaciones?: Clasificacion[];
+
   clasTemp:Clasificacion = {
-    id    : "1223",
-    nombre: "",
-    status: true
+    idClasificacion    : "1223",
+    nombreClasificacion: "",
   }
   
-  print(){
-    console.log(this.clasTemp);
-  }
+ 
 
   constructor(private modalService: BsModalService,
               private catService: CategoriaService,
               private changeDetection: ChangeDetectorRef) {
+        
+        
+          
 
-      this.clasificaciones= catService.getClasificaciones();
+  }
+  ngOnInit(): void {
+
+  this.cargarClasificaciones();
+  
+  }
+  
+  cargarClasificaciones(){
+
+    const value: string | null = localStorage.getItem('jwt');
+      this.catService.getClasificaciones((value ? value : '' ))
+      .subscribe(resp => { 
+        this.clasificaciones = resp.result;
+        console.log(this.clasificaciones)
+      });
 
   }
 
   crear(){
-    this.catService.postClasificaciones(this.clasTemp);
-    this.clasificaciones= this.catService.getClasificaciones();
-    this.modalRef?.hide();
+    const value: string | null = localStorage.getItem('jwt');
+     this.catService.postClasificaciones(this.clasTemp.nombreClasificacion,(value ? value : '' ))
+     .subscribe(async resp=>{
+       console.log('Clasificacion creada');
+       await this.cargarClasificaciones();
+       this.changeDetection.detectChanges();
+       this.modalRef?.hide();
+     });
   }
 
   editar(){
-    this.selectClas.status = this.statusSelect;
-    this.catService.putClasificaciones(this.selectClas);
-    this.clasificaciones= this.catService.getClasificaciones();
-    this.changeDetection.detectChanges();
-    this.modalRef?.hide();
+    const value: string | null = localStorage.getItem('jwt');
+    
+    this.catService.putClasificaciones(this.selectClas, (value ? value : '' ), this.statusSelect)
+    .subscribe(async resp => { 
+      console.log(resp);
+      await this.cargarClasificaciones();
+      this.changeDetection.detectChanges();
+      this.modalRef?.hide();
+    });
+    //this.clasificaciones= this.catService.getClasificaciones(JSON.stringify(localStorage.getItem("jwt")));
   }
 
   
@@ -56,14 +83,16 @@ export class CatClasifComponent implements OnInit {
 
  async openModal(template: TemplateRef<any>, clas? : Clasificacion) {
    if(clas){
-     this.selectClas= clas;
-     this.statusSelect= clas.status;
+     const claificacion: Clasificacion = {
+      idClasificacion: clas.idClasificacion  ,
+      nombreClasificacion: clas.nombreClasificacion
+     }
+     this.selectClas= claificacion;
+     this.statusSelect= true;
    }
     this.modalRef = this.modalService.show(template);
   }
 
-  ngOnInit(): void {
-  }
 
 }
 

@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss",
               "src/assets/css/light-bootstrap-dashboard.css"
             ],
@@ -40,7 +41,8 @@
               "src/assets/js/core/bootstrap.min.js",
               "src/assets/js/plugins/bootstrap-switch.js",
               "src/assets/js/light-bootstrap-dashboard.js",
-              "src/assets/js/plugins/bootstrap-notify.js"
+              "src/assets/js/plugins/bootstrap-notify.js",
+              "node_modules/chart.js/dist/chart.js"
             ]
           },
           "configurations": {
@@ -107,6 +109,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

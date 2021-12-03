@@ -1,0 +1,156 @@
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-11 p-3">
+			<div class="col-12 m-3">
+				<h2 class="text-left">
+					Usuarios
+				</h2>
+			</div>
+			<div class="table-responsive table-full-width">
+				<table class="table table-hover">
+					<thead>
+						<th>ID</th>
+						<th>Nombre</th>
+                        <th>Puesto</th>
+                        <th>Telefono</th>
+						<th>Editar</th>
+					</thead>
+					<tbody *ngFor="let user of usuarios">
+						<tr >
+							<td>{{user.idUsuario}}</td>
+							<td>{{user.nombreUsuario}}</td>
+                            <td>{{user.puesto}}</td>
+                            <td>{{user.telefono}}</td>
+							<td>
+								<i-bs  name="pencil"
+										  (click)="openModal(edit,user)"></i-bs>
+							</td>
+						</tr>	
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
+		<div class="col-11 text-left">
+			<button type="button" class="btn btn-primary" (click)="openModal(add)">Agregar</button>
+		</div>
+	</div>
+</div>
+
+ 
+<ng-template #add>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Agregar</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+		<form>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Nombre de usuario:</label>
+					  <input  name="nombreClas" [(ngModel)]="clasTemp.nombreUsuario" type="text" class="form-control" id="nombreClas">
+					</div>
+				</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="puestoClas">Puesto:</label>
+					  <input  name="puestoClas" [(ngModel)]="clasTemp.puesto" type="text" class="form-control" id="puestoClas">
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col">
+					<div class="form-group">
+					  <label for="telClas">Telefono:</label>
+					  <input  name="telClas" [(ngModel)]="clasTemp.telefono" type="text" class="form-control" id="telClas">
+					</div>
+				</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="passClas">Contraseña:</label>
+					  <input  name="passClas" [(ngModel)]="clasTemp.contraseniaUsuario" type="text" class="form-control" id="passClas" min="10">
+					</div>
+				</div>
+            </div>
+			<div class="row justify-content-end mr-1">
+				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
+					Cancelar
+				</button>
+				<button class="col-3 btn btn-success" (click)="crear()">
+					Crear
+				</button>
+			</div>
+			<div class="row justify-content-start">
+				<p class="text-danger"><small>Minimo de 10 caracteres para la contraseña</small></p>
+			</div>
+			
+			<div class="row justify-content-end mr-1">
+			</div>
+
+		</form>
+	</div>
+  </div>
+</ng-template>
+
+<ng-template #edit>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Editar</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+		<form>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Nombre:</label>
+					  <input  [(ngModel)]="selectClas.nombreUsuario" name="nameEdit" type="text" class="form-control" id="nombreClas">
+					</div>
+				</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Puesto:</label>
+					  <input  [(ngModel)]="selectClas.puesto" name="puestoEdit" type="text" class="form-control" id="puestoClas">
+					</div>
+				</div>
+                <div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Telefono:</label>
+					  <input  [(ngModel)]="selectClas.telefono" name="telEdit" type="text" class="form-control" id="telClas">
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col">
+					<div class="form-group">
+					  <label for="estatusClas">Estatus:</label>
+					  <select name="miselect" class="form-control" name="estatusClas" id="estatusClas"  [(ngModel)]="statusSelect">
+						<option [value]="true" >Activo</option>
+						<option [value]="false" >Desactivado</option>
+						</select>
+					</div>
+				</div>
+            </div>
+			<div class="row justify-content-end mr-1">
+				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
+					Cancelar
+				</button>
+				<button class="col-3 btn btn-success" (click)="editar()">
+					Guardar
+				</button>
+			</div>
+			
+			<div class="row justify-content-end mr-1">
+			</div>
+
+		</form>
+	</div>
+  </div>
+</ng-template>
+

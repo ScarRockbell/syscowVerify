@@ -1,0 +1,50 @@
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-11">
+			<div class="col-12 m-3">
+				<h2 class="text-left">
+					Listado de animales
+				</h2>
+				<div class="table-responsive table-full-width">
+					<table matSort (matSortChange)="sortData($event)" class="table table-hover">
+						<thead>
+							<th mat-sort-header="id">ID</th>
+							<th mat-sort-header="arete">Arete</th>
+							<th mat-sort-header="siniiga">SINIIGA</th>
+							<th mat-sort-header="sexo">Sexo</th>
+							<th mat-sort-header="clasificacion">Clasificacion</th>
+							<th mat-sort-header="raza">Raza</th>
+							<th>Opciones</th>
+						</thead>
+						<tbody  *ngFor="let clas of dataAnimales">
+							<tr >
+								<td>{{clas.animalID}}</td>
+								<td>{{clas.areteInter}}</td>
+								<td>
+									{{clas.areteSIINIGA}}
+								</td>
+								<td>
+									{{clas.sexo}}
+								</td>
+								<td>
+									{{clas.clasifiacion}}
+								</td>
+								<td>
+									{{clas.raza}}
+								</td>
+								<td>
+									<a routerLink='/user/details/{{clas.animalID}}'>Ver</a>
+								</td>
+							</tr>	
+						</tbody>
+					</table>
+
+			</div>
+		</div>
+		<div class="col-4">
+			<button routerLink='/user/add' class="btn btn-succes">
+				Agregar
+			</button>
+		</div>
+	</div>
+</div>

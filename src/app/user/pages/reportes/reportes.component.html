@@ -1,0 +1,51 @@
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-11 p-3">
+			<div class="col-12 m-3">
+				<h2 class="text-left">
+					Gastos por animal
+				</h2>
+			</div>
+			<div class="table-responsive table-full-width">
+				<table class="table table-hover">
+					<thead>
+						<th>ID Animal</th>
+						<th>Monto acumulado</th>
+						<th>Ver servicios</th>
+					</thead>
+					<tbody *ngFor="let Rep of reporteGastosAcum">
+						<tr>
+							<td>{{Rep.IDAnimal}}</td>
+							<td>{{Rep.Total}}</td>
+							<td><a routerLink='/user/servicios/{{Rep.IDAnimal}}'>Ver</a>
+							</td>
+						</tr>	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-11 p-3">
+			<div class="col-12 m-3">
+				<h2 class="text-left">
+					Partos por medico
+				</h2>
+			</div>
+			<div class="table-responsive table-full-width">
+				<table class="table table-hover">
+					<thead>
+						<th>ID</th>
+                        <th>Numero de partos</th>
+					</thead>
+					<tbody *ngFor="let Parto of reportePartosMedico">
+						<tr >
+							<td>{{Parto.IDMedico}}</td>
+							<td>{{Parto.TotalPartos}}</td>
+						</tr>	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

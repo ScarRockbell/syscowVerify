@@ -1,0 +1,166 @@
+<div class="row justify-content-around">
+	<button class="btn btn-primary"
+	[routerLink]="['/user/servicios',id]">
+		Servicios
+	</button>
+	<button *ngIf="mostrarDetalles" class="btn btn-primary"
+	[routerLink]="['/user/diagnosticos',id]">
+		Diagnostico
+	</button>
+	<button *ngIf="mostrarDetalles"  class="btn btn-primary"
+	[routerLink]="['/user/partos',id]">
+		Partos
+	</button>
+</div>
+
+<div class="container-fluid m-5">
+	<h1>Detalles:</h1>
+
+	<div class="container">
+		<form [formGroup]="miFormulario">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<label class="col-12">Arete Interno:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingrese arete</mat-label>
+							<input matInput placeholder="Ej. 123"  formControlName="areteInterno">
+						</mat-form-field>
+					</div>
+					<div class="col">
+						<label class="col-12">Arete Siniiga:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingrese Siniiga</mat-label>
+							<input matInput placeholder="Ej. 1400012334" formControlName="areteSiniiga">
+						</mat-form-field>
+					</div>
+				</div>
+			
+				<div class="row justify-content-left">
+					<div class="col">
+						<label class="col-12">Fecha de Nacimiento:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingresa fecha:</mat-label>
+							<input matInput [matDatepicker]="picker1" formControlName="fechaNacimiento">
+							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+							<mat-datepicker #picker1></mat-datepicker>
+						</mat-form-field>
+					</div>
+					<div class="col">
+						<label class="text-left col-12">Sexo:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingresa Sexo:</mat-label>
+							<mat-select formControlName="sexo">
+							  <mat-option [value]="'H'">
+								Hembra
+							  </mat-option>
+							  <mat-option [value]="'M'">
+								Macho
+							  </mat-option>
+							</mat-select>
+						  </mat-form-field>
+					</div>
+				</div>
+				<div class="row justify-content-left">
+					<div class="col" *ngIf="clasificaciones">
+						<label class="text-left col-12">Clasificación:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingresa clasificación:</mat-label>
+							<mat-select formControlName="idClasificacion">
+							  <mat-option *ngFor="let clas of clasificaciones" [value]="clas.idClasificacion">
+								{{clas.nombreClasificacion}}
+							  </mat-option>
+							</mat-select>
+						  </mat-form-field>
+					</div>
+					<div class="col" *ngIf="razas">
+						<label class="text-left col-12">Raza:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingresa raza:</mat-label>
+							<mat-select formControlName="idRaza">
+							  <mat-option *ngFor="let raza of razas" [value]="raza.id">
+								{{raza.nombre}}
+							  </mat-option>
+							</mat-select>
+						  </mat-form-field>
+					</div>
+				</div>
+			</div>
+			<div class="row jutify-content-left">
+				<div class="col-2">
+					<button *ngIf="miFormulario.touched" class="btn btn-success" type="submit" (click)="editar()">
+						Editar
+					</button>
+				</div>
+				<div class="col-2">
+					<button class="btn btn-danger" (click)="openModal(baja)">
+						Dar baja
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<ng-template #baja>
+	<div class="modal-header">
+	  <h4 class="modal-title pull-left">Agregar</h4>
+	  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+		<span aria-hidden="true" class="visually-hidden">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body">
+	  <div class="container">
+		  <form [formGroup]="formularioBaja">
+			  <div class="row">
+				  <div class="col">
+					<label class="col-12">Fecha de Baja:</label>
+					<mat-form-field>
+						<mat-label>Ingresa Fecha</mat-label>
+						<input matInput [matDatepicker]="pickerBaja" formControlName="fecha">
+						<mat-datepicker-toggle matSuffix [for]="pickerBaja"></mat-datepicker-toggle>
+						<mat-datepicker #pickerBaja></mat-datepicker>
+					  </mat-form-field>
+				  </div>
+				  <div class="col">
+					<label class="col-12">Descripcion:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingrese descripcion</mat-label>
+						<input matInput placeholder="Ej. Muerta por diarrea" formControlName="descripcion">
+					</mat-form-field>
+				</div>
+				<mat-checkbox class="col-12"
+                  [checked]="allComplete"
+				  (change)="changeVenta($event.checked)">Venta </mat-checkbox>
+				
+			  </div>
+			</form>
+			<form [formGroup]="formularioVenta" *ngIf="ventaSelect">
+				<div class="row">
+					<div class="col">
+						<label class="col-12">Comprador:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingrese Comprador</mat-label>
+							<input matInput placeholder="Ej. Juan Perez" formControlName="comprador">
+						</mat-form-field>
+					</div>
+					<div class="col">
+						<label class="col-12">Precio:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingrese precio de venta</mat-label>
+							<input type="number" matInput placeholder="Ej.1000" formControlName="precio">
+						</mat-form-field>
+					</div>
+				</div>	
+			</form>
+			  <div class="row justify-content-end mr-1">
+				  <button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-warning">
+					  Cancelar
+				  </button>
+				  <button class="col-4 btn btn-danger" (click)="registrarBaja()">
+					  Dar de Baja
+				  </button>
+			  </div>
+	  </div>
+	</div>
+  </ng-template>

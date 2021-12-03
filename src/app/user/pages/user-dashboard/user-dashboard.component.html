@@ -1,1 +1,38 @@
-<p>user-dashboard works!</p>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-5">
+			<div class="card p-3">
+				<h2 class="text-center">Cantidad de animales por edad</h2>
+				<h3 class="text-center">2021</h3>
+				<p-chart type="bar" [data]="dataGraficaEdadPorAnimal" [options]="basicOptions"></p-chart>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="card p-3">
+				<h2 class="text-center">Gasto por mes</h2>
+				<h3 class="text-center">2021</h3>
+				<p-chart type="line" [data]="dataGastosPorAnio" [options]="basicOptions"></p-chart>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="card p-3">
+				<h2 class="text-center">Ventas por mes</h2>
+				<h3 class="text-center">2021</h3>
+				<p-chart type="line" [data]="dadaVentasPorAnio" [options]="basicOptions"></p-chart>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="card p-3">
+				<h2 class="text-center">Comparación</h2>
+				<h3 class="text-center"> Gastos - Ventas 2021</h3>
+				<p-chart type="bar" [data]="dataVentasGastos" [options]="basicOptions"></p-chart>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="card p-3">
+				<h2 class="text-center">Inventario</h2>
+				<h3 class="text-center">Razas</h3>
+				<p-chart type="doughnut" [data]="dataClasificacion" [options]="basicOptions" ></p-chart>			</div>
+		</div>
+	</div>
+</div>

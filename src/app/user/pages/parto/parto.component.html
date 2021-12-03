@@ -1,0 +1,44 @@
+<div class="row mb-5 justify-content-around">
+	<button class="btn btn-primary"
+	[routerLink]="['/user/details',id]">
+		Detalles
+	</button>
+	<button *ngIf="mostrarDetalles" class="btn btn-primary"
+	[routerLink]="['/user/diagnosticos',id]">
+		Diagnostico
+	</button>
+	<button *ngIf="mostrarDetalles"  class="btn btn-primary"
+	[routerLink]="['/user/partos',id]">
+		Partos
+	</button>
+</div>
+<div class="row justify-content-around">
+	<div class="container-fluid">
+		<h2>Listado de Partos</h2>
+		<div class="row justify-content-center">
+			<div class="col-11 p-3">
+				<div class="table-responsive table-full-width">
+					<table class="table table-hover">
+						<thead>
+							<th>ID</th>
+							<th>Fecha Parto</th>
+							<th>Fecha diagnostico</th>
+							<th>Tipo de Parto</th>
+							<th>Dias de Carga</th>
+						</thead>
+						<tbody *ngFor="let clas of partos">
+							<tr >
+								<td>{{clas.IDParto}}</td>
+								<td>{{clas.FechaParto | date}}</td>
+								<td>{{clas.FechaDiagnostico | date}}</td>
+								<td>{{clas.TipoParto}}</td>
+								<td>{{clas.DiasDeCarga}}</td>
+							</tr>	
+						</tbody>
+					</table>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

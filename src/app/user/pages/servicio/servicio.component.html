@@ -1,0 +1,109 @@
+<div class="row mb-5 justify-content-around">
+	<button class="btn btn-primary"
+	[routerLink]="['/user/details',id]">
+		Detalles
+	</button>
+	<button *ngIf="mostrarDetalles" class="btn btn-primary"
+	[routerLink]="['/user/diagnosticos',id]">
+		Diagnostico
+	</button>
+	<button *ngIf="mostrarDetalles"  class="btn btn-primary"
+	[routerLink]="['/user/partos',id]">
+		Partos
+	</button>
+</div>
+<div class="row justify-content-around">
+	<div class="container-fluid">
+		<h2>Listado de Servicios</h2>
+		<div class="row justify-content-center">
+			<div class="col-11 p-3">
+				<div class="table-responsive table-full-width">
+					<table class="table table-hover">
+						<thead>
+							<th>ID</th>
+							<th>Fecha</th>
+							<th>Costo</th>
+						</thead>
+						<tbody *ngFor="let clas of servicios">
+							<tr >
+								<td>{{clas.IDServicio}}</td>
+								<td>{{clas.FechaServicio | date}}</td>
+								<td>{{clas.Costo}}</td>
+							</tr>	
+						</tbody>
+					</table>
+				
+				</div>
+			</div>
+			<div class="col-11 text-left">
+				<button type="button" class="btn btn-primary" (click)="openModal(add)">Agregar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<ng-template #add>
+	<div class="modal-header">
+	  <h4 class="modal-title pull-left">Agregar Servicio</h4>
+	  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+		<span aria-hidden="true" class="visually-hidden">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body modal-lg">
+	  <div class="container">
+		  <form [formGroup]="miFormulario" >
+			  <div class="row justify-content-left">
+				  <div class="col-6" *ngIf="medicos">
+					  <label class="text-left col-12">Medico:</label>
+					  <mat-form-field appearance="fill">
+						  <mat-label>Ingresa medico:</mat-label>
+						  <mat-select formControlName="IDMedico">
+							  <mat-option *ngFor="let clas of medicos" [value]="clas.idMedico">
+								  {{clas.nombre}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				  <div class="col-6" *ngIf="tipoServicios">
+					  <label class="text-left col-12">Tipo de Servicio:</label>
+					  <mat-form-field appearance="fill">
+						  <mat-label>Ingresa tipo:</mat-label>
+						  <mat-select formControlName="IDTipoServicio">
+							  <mat-option *ngFor="let clas of tipoServicios" [value]="clas.id">
+								  {{clas.descripcion}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="col-6">
+						<label class="col-12">Fecha de Servicio:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingresa fecha:</mat-label>
+							<input matInput [matDatepicker]="picker1" formControlName="FechaServicio">
+							<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+							<mat-datepicker #picker1></mat-datepicker>
+						</mat-form-field>
+					</div>
+					<div class="col-6">
+						<label class="col-12">Costo:</label>
+						<mat-form-field appearance="fill">
+							<mat-label>Ingrese costo de servicio:</mat-label>
+							<input type="number" matInput placeholder="Ej.1000" formControlName="Costo">
+						</mat-form-field>
+					</div>
+				</div>
+			  <div class="row justify-content-end mr-1">
+				  <button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
+					  Cancelar
+				  </button>
+				  <button class="col-3 btn btn-success" (click)="crear()">
+					  Crear
+				  </button>
+			  </div>
+			  
+			  <div class="row justify-content-end mr-1">
+			  </div>
+  
+		  </form>
+	  </div>
+	</div>
+  </ng-template>

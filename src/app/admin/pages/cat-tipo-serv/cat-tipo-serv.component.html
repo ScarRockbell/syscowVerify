@@ -1,1 +1,116 @@
-<p>cat-tipo-serv works!</p>
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-11 p-3">
+			<div class="col-12 m-3">
+				<h2 class="text-left">
+					Servicios
+				</h2>
+			</div>
+			<div class="table-responsive table-full-width">
+				<table class="table table-hover">
+					<thead>
+						<th>ID</th>
+						<th>Nombre</th>
+
+						<th>Editar</th>
+					</thead>
+					<tbody *ngFor="let service of servicios">
+						<tr >
+							<td>{{service.id}}</td>
+							<td>{{service.descripcion}}</td>
+
+							<td>
+								<i-bs  name="pencil"
+										  (click)="openModal(edit,service)"></i-bs>
+							</td>
+						</tr>	
+					</tbody>
+				</table>
+			
+			</div>
+		</div>
+		<div class="col-11 text-left">
+			<button type="button" class="btn btn-primary" (click)="openModal(add)">Agregar</button>
+		</div>
+	</div>
+</div>
+
+ 
+<ng-template #add>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Agregar</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+		<form>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Ingresa nombre de servicio:</label>
+					  <input  name="nombreClas" [(ngModel)]="clasTemp.descripcion" type="text" class="form-control" id="nombreClas">
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-end mr-1">
+				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
+					Cancelar
+				</button>
+				<button class="col-3 btn btn-success" (click)="crear()">
+					Crear
+				</button>
+			</div>
+			
+			<div class="row justify-content-end mr-1">
+			</div>
+
+		</form>
+	</div>
+  </div>
+</ng-template>
+
+<ng-template #edit>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Editar</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+		<form>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+					  <label for="nombreClas">Nombre:</label>
+					  <input  [(ngModel)]="selectClas.descripcion" name="clasEdit" type="text" class="form-control" id="nombreClas">
+					</div>
+				</div>
+				<div class="col">
+					<div class="form-group">
+					  <label for="estatusClas">Estatus:</label>
+					  <select name="miselect" class="form-control" name="estatusClas" id="estatusClas"  [(ngModel)]="statusSelect">
+						<option [value]="true" >Activo</option>
+						<option [value]="false" >Desactivado</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-end mr-1">
+				<button (click)="modalRef?.hide()" class="col-3 mr-1 btn btn-danger">
+					Cancelar
+				</button>
+				<button class="col-3 btn btn-success" (click)="editar()">
+					Guardar
+				</button>
+			</div>
+			
+			<div class="row justify-content-end mr-1">
+			</div>
+
+		</form>
+	</div>
+  </div>
+</ng-template>

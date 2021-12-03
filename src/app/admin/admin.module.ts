@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { StatusPipe } from '../core/pipes/status.pipe';
+import { CatUsuariosComponent } from './pages/cat-usuarios/cat-usuarios.component';
 
 
 @NgModule({
@@ -24,12 +25,12 @@ import { StatusPipe } from '../core/pipes/status.pipe';
     CatClasifComponent,
     CatMedicosComponent,
     CatRazaComponent,
-    CatTipoServComponent
+    CatTipoServComponent,
+    CatUsuariosComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ModalModule.forRoot(),
     NgxBootstrapIconsModule.pick(allIcons),
     RouterModule,
     FormsModule,
