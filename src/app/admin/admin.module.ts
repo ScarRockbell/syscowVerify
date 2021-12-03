@@ -29,7 +29,6 @@ import { StatusPipe } from '../core/pipes/status.pipe';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ModalModule.forRoot(),
     NgxBootstrapIconsModule.pick(allIcons),
     RouterModule,
     FormsModule,

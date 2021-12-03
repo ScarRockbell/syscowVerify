@@ -9,7 +9,7 @@ import { StatusPipe } from './pipes/status.pipe';
     StatusPipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [StatusPipe]
 })

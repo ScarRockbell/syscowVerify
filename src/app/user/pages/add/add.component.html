@@ -1,0 +1,80 @@
+<div class="container-fluid">
+	<h1>Añadir animal:</h1>
+	<form [formGroup]="miFormulario">
+		<div class="container">
+			<div class="row">
+				<div class="col-4">
+					<label class="col-12">Arete Interno:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingrese arete</mat-label>
+						<input matInput placeholder="Ej. 123"  formControlName="areteInterno">
+					</mat-form-field>
+				</div>
+				<div class="col-5">
+					<label class="col-12">Arete Siniiga:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingrese Siniiga</mat-label>
+						<input matInput placeholder="Ej. 1400012334" formControlName="areteSiniiga">
+					</mat-form-field>
+				</div>
+			</div>
+		
+			<div class="row justify-content-left">
+				<div class="col-4">
+					<label class="col-12">Fecha de Nacimiento:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingresa fecha:</mat-label>
+						<input matInput [matDatepicker]="picker1" formControlName="fechaNacimiento">
+						<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+						<mat-datepicker #picker1></mat-datepicker>
+					</mat-form-field>
+				</div>
+				<div class="col-6">
+					<label class="text-left col-12">Sexo:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingresa Sexo:</mat-label>
+						<mat-select formControlName="sexo">
+						  <mat-option [value]="'H'">
+							Hembra
+						  </mat-option>
+						  <mat-option [value]="'M'">
+							Macho
+						  </mat-option>
+						</mat-select>
+					  </mat-form-field>
+				</div>
+			</div>
+			<div class="row justify-content-left">
+				<div class="col-4" *ngIf="clasificaciones">
+					<label class="text-left col-12">Clasificación:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingresa clasificación:</mat-label>
+						<mat-select formControlName="idClasificacion">
+						  <mat-option *ngFor="let clas of clasificaciones" [value]="clas.idClasificacion">
+							{{clas.nombreClasificacion}}
+						  </mat-option>
+						</mat-select>
+					  </mat-form-field>
+				</div>
+				<div class="col-6" *ngIf="razas">
+					<label class="text-left col-12">Raza:</label>
+					<mat-form-field appearance="fill">
+						<mat-label>Ingresa raza:</mat-label>
+						<mat-select formControlName="idRaza">
+						  <mat-option *ngFor="let raza of razas" [value]="raza.id">
+							{{raza.nombre}}
+						  </mat-option>
+						</mat-select>
+					  </mat-form-field>
+				</div>
+			</div>
+		</div>
+		<div class="row jutify-content-left">
+			<div class="ml-4 col-6">
+				<button class="btn btn-success" type="submit" (click)="crear()">
+					Crear
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

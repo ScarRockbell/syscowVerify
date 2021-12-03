@@ -3,12 +3,49 @@
 	[routerLink]="['/user/details',id]">
 		Detalles
 	</button>
-	<button class="btn btn-primary"
+	<button *ngIf="mostrarDetalles" class="btn btn-primary"
 	[routerLink]="['/user/diagnosticos',id]">
 		Diagnostico
 	</button>
-	<button class="btn btn-primary"
+	<button *ngIf="mostrarDetalles"  class="btn btn-primary"
 	[routerLink]="['/user/partos',id]">
 		Partos
 	</button>
+</div>
+<div class="row justify-content-around">
+	<div class="container-fluid">
+		<!-- <h2>Listado de Servicios</h2>
+		<div class="row justify-content-center">
+			<div class="col-11 p-3">
+				<div class="col-12 m-3">
+					<h2 class="text-left">
+						Clasificaciones
+					</h2>
+				</div>
+				<div class="table-responsive table-full-width">
+					<table class="table table-hover">
+						<thead>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Editar</th>
+						</thead>
+						<tbody *ngFor="let clas of clasificaciones">
+							<tr >
+								<td>{{clas.idClasificacion}}</td>
+								<td>{{clas.nombreClasificacion}}</td>
+								<td>
+									<i-bs  name="pencil"
+											  (click)="openModal(edit,clas)"></i-bs>
+								</td>
+							</tr>	
+						</tbody>
+					</table>
+				
+				</div>
+			</div>
+			<div class="col-11 text-left">
+				<button type="button" class="btn btn-primary" (click)="openModal(add)">Agregar</button>
+			</div>
+		</div> -->
+	</div>
 </div>

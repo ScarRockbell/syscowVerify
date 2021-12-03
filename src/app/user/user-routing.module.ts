@@ -8,6 +8,7 @@ import { DiagnosticoComponent } from './pages/diagnostico/diagnostico.component'
 import { PartoComponent } from './pages/parto/parto.component';
 import { AnimalesComponent } from './pages/animales/animales.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
+import { AddComponent } from './pages/add/add.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'partos/:id', component: PartoComponent},
       { path: 'animales', component: AnimalesComponent},
       { path: 'reportes', component: ReportesComponent},
+      { path: 'add', component: AddComponent},
     ]
   }
 
